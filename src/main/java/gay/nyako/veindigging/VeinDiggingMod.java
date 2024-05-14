@@ -4,6 +4,7 @@ import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -49,16 +50,18 @@ public class VeinDiggingMod implements ModInitializer {
 			}
 		});
 
-		ServerPlayNetworking.registerGlobalReceiver(CHANGE_VEINDIGGING_STATE_PACKET, (server, player, handler, buffer, sender) -> {
-			boolean state = buffer.readBoolean();
-			server.execute(() -> {
-				((PlayerEntityAccess) player).setVeinDigging(state);
+		PayloadTypeRegistry.playC2S().register(UsingClientModPacket.ID, UsingClientModPacket.CODEC);
+		PayloadTypeRegistry.playC2S().register(ChangeVeinDiggingStatePayload.ID, ChangeVeinDiggingStatePayload.CODEC);
+
+		ServerPlayNetworking.registerGlobalReceiver(ChangeVeinDiggingStatePayload.ID, (payload, context) -> {
+			context.player().server.execute(() -> {
+				((PlayerEntityAccess) context.player()).setVeinDigging(payload.state());
 			});
 		});
 
-		ServerPlayNetworking.registerGlobalReceiver(USING_CLIENT_MOD_PACKET, (server, player, handler, buffer, sender) -> {
-			server.execute(() -> {
-				((PlayerEntityAccess) player).veindigging$setUsingClientMod(true);
+		ServerPlayNetworking.registerGlobalReceiver(UsingClientModPacket.ID, (payload, context) -> {
+			context.player().server.execute(() -> {
+				((PlayerEntityAccess) context.player()).veindigging$setUsingClientMod(true);
 			});
 		});
 	}

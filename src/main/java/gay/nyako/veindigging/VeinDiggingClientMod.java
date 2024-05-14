@@ -34,18 +34,18 @@ public class VeinDiggingClientMod implements ClientModInitializer {
                     VEINDIGGING_HELD = true;
                     PacketByteBuf passedData = new PacketByteBuf(Unpooled.buffer());
                     passedData.writeBoolean(true);
-                    ClientPlayNetworking.send(VeinDiggingMod.CHANGE_VEINDIGGING_STATE_PACKET, passedData);
+                    ClientPlayNetworking.send(new ChangeVeinDiggingStatePayload(true));
                 }
             } else if (VEINDIGGING_HELD) {
                 VEINDIGGING_HELD = false;
                 PacketByteBuf passedData = new PacketByteBuf(Unpooled.buffer());
                 passedData.writeBoolean(false);
-                ClientPlayNetworking.send(VeinDiggingMod.CHANGE_VEINDIGGING_STATE_PACKET, passedData);
+                ClientPlayNetworking.send(new ChangeVeinDiggingStatePayload(false));
             }
         });
 
         ClientPlayConnectionEvents.JOIN.register((handler, sender, client) -> {
-            ClientPlayNetworking.send(VeinDiggingMod.USING_CLIENT_MOD_PACKET, PacketByteBufs.empty());
+            ClientPlayNetworking.send(UsingClientModPacket.INSTANCE);
         });
     }
 }

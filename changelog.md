@@ -1,1 +1,1 @@
-Fix broken client-mod check
+Update the mod to 1.20.6
