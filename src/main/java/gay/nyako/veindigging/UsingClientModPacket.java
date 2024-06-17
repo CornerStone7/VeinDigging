@@ -3,10 +3,11 @@ package gay.nyako.veindigging;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.packet.CustomPayload;
+import net.minecraft.util.Identifier;
 
 public record UsingClientModPacket() implements CustomPayload {
     public static final UsingClientModPacket INSTANCE = new UsingClientModPacket();
-    public static final Id<UsingClientModPacket> ID = CustomPayload.id("veindigging:using_client_mod");
+    public static final Id<UsingClientModPacket> ID = new CustomPayload.Id<>(Identifier.of("veindigging:using_client_mod"));
     public static final PacketCodec<PacketByteBuf, UsingClientModPacket> CODEC = PacketCodec.unit(UsingClientModPacket.INSTANCE);
 
     @Override

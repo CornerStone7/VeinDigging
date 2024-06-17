@@ -1,1 +1,1 @@
-Update the mod to 1.20.6
+Update the mod to 1.21

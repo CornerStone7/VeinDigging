@@ -24,14 +24,14 @@ import java.util.*;
 public class VeinDiggingMod implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger("veindigging");
 	public static final VeinDiggingConfig CONFIG = AutoConfig.register(VeinDiggingConfig.class, GsonConfigSerializer::new).getConfig();
-	public static final Identifier CHANGE_VEINDIGGING_STATE_PACKET = new Identifier("veindigging", "change_veindigging_state");
-	public static final Identifier USING_CLIENT_MOD_PACKET = new Identifier("veindigging", "using_client_mod");
-	public static final TagKey<Block> SHIFT_BLACKLIST_TAG = TagKey.of(RegistryKeys.BLOCK, new Identifier("veindigging", "shift_blacklist"));
-	public static final TagKey<Block> SHIFT_WHITELIST_TAG = TagKey.of(RegistryKeys.BLOCK, new Identifier("veindigging", "shift_whitelist"));
-	public static final TagKey<Block> BIND_BLACKLIST_TAG = TagKey.of(RegistryKeys.BLOCK, new Identifier("veindigging", "bind_blacklist"));
-	public static final TagKey<Block> BIND_WHITELIST_TAG = TagKey.of(RegistryKeys.BLOCK, new Identifier("veindigging", "bind_whitelist"));
-	public static final TagKey<Block> GLOBAL_BLACKLIST_TAG = TagKey.of(RegistryKeys.BLOCK, new Identifier("veindigging", "global_blacklist"));
-	public static final TagKey<Block> GLOBAL_WHITELIST_TAG = TagKey.of(RegistryKeys.BLOCK, new Identifier("veindigging", "global_whitelist"));
+	public static final Identifier CHANGE_VEINDIGGING_STATE_PACKET = Identifier.of("veindigging", "change_veindigging_state");
+	public static final Identifier USING_CLIENT_MOD_PACKET = Identifier.of("veindigging", "using_client_mod");
+	public static final TagKey<Block> SHIFT_BLACKLIST_TAG = TagKey.of(RegistryKeys.BLOCK, Identifier.of("veindigging", "shift_blacklist"));
+	public static final TagKey<Block> SHIFT_WHITELIST_TAG = TagKey.of(RegistryKeys.BLOCK, Identifier.of("veindigging", "shift_whitelist"));
+	public static final TagKey<Block> BIND_BLACKLIST_TAG = TagKey.of(RegistryKeys.BLOCK, Identifier.of("veindigging", "bind_blacklist"));
+	public static final TagKey<Block> BIND_WHITELIST_TAG = TagKey.of(RegistryKeys.BLOCK, Identifier.of("veindigging", "bind_whitelist"));
+	public static final TagKey<Block> GLOBAL_BLACKLIST_TAG = TagKey.of(RegistryKeys.BLOCK, Identifier.of("veindigging", "global_blacklist"));
+	public static final TagKey<Block> GLOBAL_WHITELIST_TAG = TagKey.of(RegistryKeys.BLOCK, Identifier.of("veindigging", "global_whitelist"));
 
 	public static boolean CURRENTLY_VEINDIGGING = false;
 	public static BlockPos CURRENT_BLOCK_POS = null;
