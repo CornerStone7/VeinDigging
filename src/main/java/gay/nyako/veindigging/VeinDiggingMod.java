@@ -15,6 +15,7 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -103,6 +104,7 @@ public class VeinDiggingMod implements ModInitializer {
 	}
 
 	private void startVeinDigging(World world, PlayerEntity player, BlockPos pos, BlockState state) {
+		ChunkPos currentChunkPos = new ChunkPos(pos);
 		ArrayList<BlockPos> blocksToBreak = new ArrayList<>();
 		ArrayList<BlockPos> blocksChecked = new ArrayList<>();
 		blocksToBreak.add(pos);
@@ -130,6 +132,14 @@ public class VeinDiggingMod implements ModInitializer {
 							continue;
 						}
 						blocksChecked.add(newPos);
+
+						// Check if blocks within same chunk.
+						if (CONFIG.chunkMining)
+						{
+							ChunkPos newChunkPos = new ChunkPos(newPos);
+							if (!newChunkPos.equals(currentChunkPos))
+								continue;
+						}
 
 						// Make sure we don't check blocks that are too far away
 						if (Math.abs(newPos.getX() - pos.getX()) > CONFIG.maxRange ||

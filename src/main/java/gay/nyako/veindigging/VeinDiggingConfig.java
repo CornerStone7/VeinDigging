@@ -13,6 +13,7 @@ public class VeinDiggingConfig implements ConfigData {
     public boolean useGlobalWhitelist = false;
     public boolean useBindWhitelist = false;
     public boolean useShiftWhitelist = true;
+    public boolean chunkMining = false;
     @ConfigEntry.Gui.Tooltip
     public int maxBlocks = 64;
     @ConfigEntry.Gui.Tooltip

@@ -9,5 +9,7 @@
     "text.autoconfig.veindigging.option.maxBlocks": "Max Blocks",
     "text.autoconfig.veindigging.option.maxBlocks.@Tooltip": "The maximum number of blocks that can be mined at once.",
     "text.autoconfig.veindigging.option.maxRange": "Max Range",
-    "text.autoconfig.veindigging.option.maxRange.@Tooltip": "The maximum range that can be reached while mining."
+    "text.autoconfig.veindigging.option.maxRange.@Tooltip": "The maximum range that can be reached while mining.",
+    "text.autoconfig.veindigging.option.chunkMining": "Chunk Mining",
+    "text.autoconfig.veindigging.option.chunkMining.@Tooltip": "Only mine blocks within same chunk."
 }

@@ -94,7 +94,7 @@ publishing {
 import com.modrinth.minotaur.dependencies.ModDependency
 
 modrinth {
-	token = env.MODRINTH_TOKEN.value
+	//token = env.MODRINTH_TOKEN.value
 	projectId = 'Qo9d9jpM'
 	versionNumber = project.mod_version
 	versionName = 'VeinDigging ' + project.mod_version
@@ -110,7 +110,7 @@ modrinth {
 }
 
 curseforge {
-	apiKey = env.CURSEFORGE_TOKEN.value
+	//apiKey = env.CURSEFORGE_TOKEN.value
 	project {
 		id = '849999'
 		releaseType = 'release'
